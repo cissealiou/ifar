@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFAR Technologie - Solutions IA pour la Santé</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --health-pink: #f48fb1;
+            --hope-green: #81c784;
+            --light-gray: #f8f9fa;
+            --dark-gray: #263238;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-gray);
+            background-color: var(--light-gray);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(244, 143, 177, 0.15) 0%, rgba(129, 199, 132, 0.1) 100%);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(244, 143, 177, 0.1) 0%, rgba(129, 199, 132, 0.15) 100%);
+        }
+        
+        .health-pink-bg {
+            background-color: var(--health-pink);
+        }
+        
+        .health-pink-text {
+            color: var(--health-pink);
+        }
+        
+        .hope-green-bg {
+            background-color: var(--hope-green);
+        }
+        
+        .hope-green-text {
+            color: var(--hope-green);
+        }
+        
+        .light-gray-bg {
+            background-color: var(--light-gray);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--health-pink);
+            border-radius: 2px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--health-pink);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .service-card {
+            transition: all 0.4s ease;
+            border-bottom: 4px solid var(--hope-green);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .value-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--health-pink);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(244, 143, 177, 0.05);
+        }
+        
+        .sector-card {
+            transition: all 0.3s ease;
+        }
+        
+       /* img {
+            height: 70px; /* Augmente la hauteur */
+            /* width: 70px ;
+            margin-right: 15px; /* Espace entre le logo et le texte 
+        } */
+        .sector-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+        
+        .facebook:hover { color: #3b5998; }
+        .twitter:hover { color: #1da1f2; }
+        .instagram:hover { color: #e1306c; }
+        .linkedin:hover { color: #0077b5; }
+        .tiktok:hover { color: #000000; }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--health-pink) 0%, #f06292 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(244, 143, 177, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--hope-green) 0%, #66bb6a 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(129, 199, 132, 0.4);
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-sm z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="logo.jpg" alt="logo" width="80" height="80"> <br/>
+                <h1 class="text-xl md:text-2xl font-bold text-gray-800">IFAR <span class="health-pink-text">Technologie</span></h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#accueil" class="nav-link relative text-gray-700 hover:text-gray-900 font-medium">Accueil</a>
+                <a href="#apropos" class="nav-link relative text-gray-700 hover:text-gray-900 font-medium">À propos</a>
+                <a href="#services" class="nav-link relative text-gray-700 hover:text-gray-900 font-medium">Services</a>
+                <a href="#secteurs" class="nav-link relative text-gray-700 hover:text-gray-900 font-medium">Secteurs</a>
+                <a href="#contact" class="nav-link relative text-gray-700 hover:text-gray-900 font-medium">Contact</a>
+            </nav>
+            
+            <button class="md:hidden text-gray-700">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="pt-32 pb-20 md:pt-40 md:pb-28 hero-bg">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="hero-content animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-800">L'IA au service de <span class="health-pink-text">la santé</span></h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Des solutions innovantes pour une médecine plus précise, plus rapide et plus accessible.
+                        IFAR Technologie transforme les soins de santé grâce à l'intelligence artificielle.
+                    </p>
+                    <div class="hero-buttons flex flex-wrap gap-4">
+                        <a href="#services" class="btn-primary text-white font-bold py-3 px-8 rounded-full">Découvrir nos solutions</a>
+                        <a href="#contact" class="btn-secondary text-white font-bold py-3 px-8 rounded-full">Nous contacter</a>
+                    </div>
+                </div>
+                <div class="animate-slide-up">
+                    <div class="relative">
+                        <div class="absolute -top-6 -right-6 w-full h-full bg-gradient-to-r from-health-pink to-hope-green rounded-2xl transform rotate-6"></div>
+                        <div class="relative bg-white p-2 rounded-2xl shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="IA en santé" class="w-full h-auto rounded-xl">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos Section -->
+    <section id="apropos" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 section-title">À propos de IFAR Technologie</h2>
+                <p class="max-w-2xl mx-auto mt-6 text-gray-600">Innovation et excellence au service de la santé grâce à l'intelligence artificielle</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                <div class="animate-fade-in">
+                    <div class="bg-gray-100 p-8 rounded-2xl">
+                        <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80" alt="Équipe IFAR Technologie" class="w-full h-auto rounded-xl">
+                    </div>
+                </div>
+                
+                <div class="animate-slide-up">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Notre mission</h3>
+                    <p class="mb-6 text-gray-600 leading-relaxed">
+                        Sauver des vies grâce à l'intelligence artificielle en fournissant aux médecins, hôpitaux et laboratoires des outils fiables d'aide au diagnostic, capables de détecter rapidement les maladies, même à un stade précoce.
+                    </p>
+                    
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Notre vision</h3>
+                    <p class="mb-6 text-gray-600 leading-relaxed">
+                        Devenir un acteur de référence en Afrique et dans le monde dans le domaine de la santé numérique, en démocratisant l'accès aux technologies médicales intelligentes.
+                    </p>
+                    
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Notre expertise</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Nous combinons l'expertise médicale et technologique pour développer des solutions d'IA innovantes qui transforment la pratique médicale et améliorent les résultats pour les patients.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Valeurs -->
+            <div class="text-center mb-12">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-800">Nos valeurs</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="value-card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="w-12 h-12 rounded-full health-pink-bg flex items-center justify-center text-white mb-4">
+                        <i class="fas fa-lightbulb text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Innovation</h4>
+                    <p class="text-gray-600">Proposer des solutions de pointe basées sur l'IA pour transformer la pratique médicale.</p>
+                </div>
+                
+                <div class="value-card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="w-12 h-12 rounded-full hope-green-bg flex items-center justify-center text-white mb-4">
+                        <i class="fas fa-hands-helping text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Impact social</h4>
+                    <p class="text-gray-600">Améliorer la qualité de vie des populations grâce à un meilleur accès aux soins.</p>
+                </div>
+                
+                <div class="value-card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="w-12 h-12 rounded-full health-pink-bg flex items-center justify-center text-white mb-4">
+                        <i class="fas fa-shield-alt text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Éthique</h4>
+                    <p class="text-gray-600">Garantir la confidentialité, la sécurité et l'intégrité des données médicales.</p>
+                </div>
+                
+                <div class="value-card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="w-12 h-12 rounded-full hope-green-bg flex items-center justify-center text-white mb-4">
+                        <i class="fas fa-users text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Collaboration</h4>
+                    <p class="text-gray-600">Travailler avec les institutions de santé et centres de recherche pour un impact durable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 gradient-bg">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 section-title">Nos services</h2>
+                <p class="max-w-2xl mx-auto mt-6 text-gray-600">Des solutions d'intelligence artificielle conçues pour améliorer la détection, le diagnostic et le suivi des maladies</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-8 rounded-2xl">
+                    <div class="w-16 h-16 rounded-full health-pink-bg flex items-center justify-center text-white mb-6">
+                        <i class="fas fa-search-medical text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Détection assistée par IA</h3>
+                    <p class="text-gray-600 mb-4">Systèmes capables d'analyser des images médicales (IRM, radiographies, scanners, microscopie) pour identifier des anomalies liées à des maladies comme le cancer.</p>
+                    <ul class="text-gray-600 pl-5 space-y-2">
+                        <li class="flex items-start"><i class="fas fa-check-circle hope-green-text mt-1 mr-2"></i> Détection précoce des tumeurs</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle hope-green-text mt-1 mr-2"></i> Analyse d'images haute précision</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle hope-green-text mt-1 mr-2"></i> Réduction des erreurs de diagnostic</li>
+                    </ul>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-8 rounded-2xl">
+                    <div class="w-16 h-16 rounded-full hope-green-bg flex items-center justify-center text-white mb-6">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Diagnostic prédictif</h3>
+                    <p class="text-gray-600 mb-4">Outils exploitant des données cliniques et biologiques pour anticiper les risques de maladies chroniques.</p>
+                    <ul class="text-gray-600 pl-5 space-y-2">
+                        <li class="flex items-start"><i class="fas fa-check-circle hope-green-text mt-1 mr-2"></i> Évaluation des risques personnalisée</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle hope-green-text mt-1 mr-2"></i> Prévention ciblée</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle hope-green-text mt-1 mr-2"></i> Suivi longitudinal des patients</li>
+                    </ul>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-8 rounded-2xl">
+                    <div class="w-16 h-16 rounded-full health-pink-bg flex items-center justify-center text-white mb-6">
+                        <i class="fas fa-mobile-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Plateformes de santé numérique</h3>
+                    <p class="text-gray-600 mb-4">Interfaces web et mobiles permettant aux professionnels de santé d'accéder facilement aux résultats d'analyse assistés par IA.</p>
+                    <ul class="text-gray-600 pl-5 space-y-2">
+                        <li class="flex items-start"><i class="fas fa-check-circle hope-green-text mt-1 mr-2"></i> Accès sécurisé aux résultats</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle hope-green-text mt-1 mr-2"></i> Intégration avec les systèmes existants</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle hope-green-text mt-1 mr-2"></i> Tableaux de bord personnalisables</li>
+                    </ul>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white p-8 rounded-2xl">
+                    <div class="w-16 h-16 rounded-full hope-green-bg flex items-center justify-center text-white mb-6">
+                        <i class="fas fa-flask text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Recherche & Développement</h3>
+                    <p class="text-gray-600 mb-4">Projets innovants en partenariat avec des institutions médicales et académiques pour concevoir des modèles toujours plus performants.</p>
+                    <ul class="text-gray-600 pl-5 space-y-2">
+                        <li class="flex items-start"><i class="fas fa-check-circle hope-green-text mt-1 mr-2"></i> Développement d'algorithmes avancés</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle hope-green-text mt-1 mr-2"></i> Validation clinique rigoureuse</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle hope-green-text mt-1 mr-2"></i> Publications scientifiques</li>
+                    </ul>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white p-8 rounded-2xl">
+                    <div class="w-16 h-16 rounded-full health-pink-bg flex items-center justify-center text-white mb-6">
+                        <i class="fas fa-chalkboard-teacher text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Formation & Sensibilisation</h3>
+                    <p class="text-gray-600 mb-4">Accompagnement des professionnels de santé et ateliers pour vulgariser l'usage de l'IA en médecine.</p>
+                    <ul class="text-gray-600 pl-5 space-y-2">
+                        <li class="flex items-start"><i class="fas fa-check-circle hope-green-text mt-1 mr-2"></i> Formations pratiques</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle hope-green-text mt-1 mr-2"></i> Ateliers interactifs</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle hope-green-text mt-1 mr-2"></i> Ressources pédagogiques</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secteurs & Cas d'usage -->
+    <section id="secteurs" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 section-title">Secteurs & Cas d'usage</h2>
+                <p class="max-w-2xl mx-auto mt-6 text-gray-600">Nos solutions s'appliquent à différents contextes médicaux pour améliorer les soins aux patients</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="sector-card bg-gray-50 p-8 rounded-2xl shadow-sm">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Domaines d'application</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full health-pink-bg flex items-center justify-center text-white flex-shrink-0 mr-4">
+                                <i class="fas fa-lungs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-gray-800">Oncologie</h4>
+                                <p class="text-gray-600">Détection précoce et suivi des cancers du sein, du poumon, colorectal et de la prostate.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full hope-green-bg flex items-center justify-center text-white flex-shrink-0 mr-4">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-gray-800">Neurologie</h4>
+                                <p class="text-gray-600">Diagnostic assisté pour la maladie d'Alzheimer, Parkinson et les accidents vasculaires cérébraux.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full health-pink-bg flex items-center justify-center text-white flex-shrink-0 mr-4">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-gray-800">Cardiologie</h4>
+                                <p class="text-gray-600">Analyse des risques cardiovasculaires et détection des anomalies cardiaques.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full hope-green-bg flex items-center justify-center text-white flex-shrink-0 mr-4">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-gray-800">Ophtalmologie</h4>
+                                <p class="text-gray-600">Dépistage de la rétinopathie diabétique et du glaucome à partir d'images rétiniennes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sector-card bg-gray-50 p-8 rounded-2xl shadow-sm">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Cas d'usage</h3>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-health-pink pl-4 py-2">
+                            <h4 class="font-bold text-lg text-gray-800">Hôpitaux et Cliniques</h4>
+                            <p class="text-gray-600">Intégration de nos solutions dans les workflows cliniques pour améliorer la précision diagnostique et réduire les délais d'attente.</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-hope-green pl-4 py-2">
+                            <h4 class="font-bold text-lg text-gray-800">Laboratoires d'analyse</h4>
+                            <p class="text-gray-600">Automatisation de l'analyse d'images microscopiques pour une détection plus rapide des anomalies cellulaires.</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-health-pink pl-4 py-2">
+                            <h4 class="font-bold text-lg text-gray-800">Centres de recherche</h4>
+                            <p class="text-gray-600">Collaboration sur des projets de recherche pour développer de nouveaux modèles prédictifs et outils d'analyse.</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-hope-green pl-4 py-2">
+                            <h4 class="font-bold text-lg text-gray-800">Structures de santé publique</h4>
+                            <p class="text-gray-600">Déploiement de solutions accessibles pour améliorer le dépistage dans les zones mal desservies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 gradient-bg">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 section-title">Contactez-nous</h2>
+                <p class="max-w-2xl mx-auto mt-6 text-gray-600">Nous sommes à votre écoute pour répondre à vos questions et discuter de vos besoins en solutions d'IA médicale</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="grid md:grid-cols-2">
+                    <div class="p-10">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Envoyez-nous un message</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-2">Nom complet</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-health-pink focus:ring-1 focus:ring-health-pink">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-2">Adresse email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-health-pink focus:ring-1 focus:ring-health-pink">
+                            </div>
+                            
+                             <div>
+                                <label for="name" class="block text-gray-700 mb-2">Sujet</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-health-pink focus:ring-1 focus:ring-health-pink">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-gray-700 mb-2">Message</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-health-pink focus:ring-1 focus:ring-health-pink"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary text-white font-bold py-3 px-8 rounded-full">Envoyer le message</button>
+                        </form>
+                    </div>
+                    
+                    <div class="p-10 bg-gray-800 text-white">
+                        <h3 class="text-2xl font-bold mb-6">Coordonnées</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full health-pink-bg flex items-center justify-center text-white flex-shrink-0 mr-4">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Adresse</h4>
+                                    <p>Dakar, Sénégal</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full hope-green-bg flex items-center justify-center text-white flex-shrink-0 mr-4">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Téléphone</h4>
+                                    <p>+221 78 578 00 43</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full health-pink-bg flex items-center justify-center text-white flex-shrink-0 mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Email</h4>
+                                    <p>ifartechnologie@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold text-lg mb-4">Suivez-nous</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="social-icon facebook text-gray-300"><i class="fab fa-facebook-f text-2xl"></i></a>
+                                    <a href="#" class="social-icon twitter text-gray-300"><i class="fab fa-twitter text-2xl"></i></a>
+                                    <a href="#" class="social-icon instagram text-gray-300"><i class="fab fa-instagram text-2xl"></i></a>
+                                    <a href="#" class="social-icon linkedin text-gray-300"><i class="fab fa-linkedin-in text-2xl"></i></a>
+                                    <a href="#" class="social-icon tiktok text-gray-300"><i class="fab fa-tiktok text-2xl"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-health-pink to-hope-green flex items-center justify-center text-white font-bold text-xl mr-3">
+                            IT
+                        </div>
+                        <h3 class="text-xl font-bold">IFAR <span class="health-pink-text">Technologie</span></h3>
+                    </div>
+                    <p class="mb-6 text-gray-300">Solutions innovantes d'intelligence artificielle pour transformer la santé et sauver des vies.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Liens rapides</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#accueil" class="text-gray-300 hover:text-white">Accueil</a></li>
+                        <li><a href="#apropos" class="text-gray-300 hover:text-white">À propos</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-white">Services</a></li>
+                        <li><a href="#secteurs" class="text-gray-300 hover:text-white">Secteurs</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Nos services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Détection assistée par IA</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Diagnostic prédictif</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Plateformes de santé numérique</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Recherche & Développement</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Formation & Sensibilisation</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Newsletter</h4>
+                    <p class="text-gray-300 mb-4">Restez informé de nos dernières innovations et actualités.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Votre email" class="px-4 py-3 rounded-l-lg w-full text-gray-800">
+                        <button type="submit" class="bg-health-pink hover:bg-pink-600 px-4 py-3 rounded-r-lg"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-700">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2023 IFAR Technologie. Tous droits réservés.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm">Mentions légales</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm">Politique de confidentialité</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm">Conditions d'utilisation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            document.querySelectorAll('.service-card, .value-card, .sector-card').forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Form submission
+            const contactForm = document.querySelector('form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Merci pour votre message ! Nous vous contacterons très rapidement.');
+                    this.reset();
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
